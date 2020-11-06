@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="mortgageCalculatorPage">
     <div class="mortgageCalculatorPage__title">Mortgage Calculator</div>
-  </div>
+ </div>
 </template>
 
 <script>
