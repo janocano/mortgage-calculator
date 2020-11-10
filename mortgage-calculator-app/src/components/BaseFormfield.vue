@@ -47,5 +47,23 @@ export default {
 }
 </script>
 <style scoped>
-
+.formfield__input {
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid #005DAA;
+    outline: none;
+    padding: 4px 12px;
+    font-size: 12px;
+    color: #005DAA;
+}
+::-webkit-input-placeholder {
+    font-size: 12px;
+}
+.formfield__input:focus {
+    border-color: #FFD200;
+}
+.formfield__input--disabled {
+    opacity: 0.75;
+    color: #000;
+}
 </style>
