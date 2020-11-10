@@ -1,15 +1,13 @@
 <template>
-    <div class="formfield">
-        <input 
-            :id="id"
-            class="formfield__input" 
-            :type="type"
-            :disabled="isDisabled"
-            :value="value"
-            :placeholder="placeholder"
-            @input="handleInput"
-        />
-    </div>
+    <input 
+        :id="id"
+        class="formfield" 
+        :type="type"
+        :disabled="isDisabled"
+        :value="value"
+        :placeholder="placeholder"
+        @input="handleInput"
+    />
 </template>
 <script>
 export default {
@@ -46,7 +44,7 @@ export default {
 }
 </script>
 <style scoped>
-.formfield__input {
+.formfield {
     height: 25px;
     border-radius: 5px;
     border: 1px solid #005DAA;
@@ -58,10 +56,10 @@ export default {
 ::-webkit-input-placeholder {
     font-size: 12px;
 }
-.formfield__input:focus {
+.formfield:focus {
     border-color: #FFD200;
 }
-.formfield__input:disabled {
+.formfield:disabled {
     opacity: 0.75;
     color: #000;
 }
