@@ -14,9 +14,6 @@ import { mapState } from "vuex";
 // Components
 import BaseFormfield from "./BaseFormfield.vue";
 import MortgageCaculatorBaseContainer from "./MortgageCalculatorBaseContainer.vue";
-
-// Libs
-import { SET_MORTGAGE_PAYMENT } from "../store/mutations.js";
 export default {
     components: {
         BaseFormfield,
@@ -30,7 +27,7 @@ export default {
             },
             set(value) {
                 this.$store.commit({
-                    type: SET_MORTGAGE_PAYMENT,
+                    type: "SET_MORTGAGE_PAYMENT",
                     mortgagePayment: value
                 });
             }
