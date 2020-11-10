@@ -1,6 +1,10 @@
 <template>
     <MortgageCaculatorBaseContainer title="Payment Plan">
         <div class="paymentPlanBox">
+            <div class="paymentPlanBox__item">
+                Mortgage amount ($)
+                <BaseFormfield class="formfield" placeholder="Mortgage amount" id="mortgageAmount"/>
+            </div>
         </div>
     </MortgageCaculatorBaseContainer>
 </template>
@@ -21,5 +25,13 @@ export default {
     justify-content: flex-start;
     padding: 20px;
 }
-
+.paymentPlanBox__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.formfield {
+    width: 60%;
+}
 </style>
