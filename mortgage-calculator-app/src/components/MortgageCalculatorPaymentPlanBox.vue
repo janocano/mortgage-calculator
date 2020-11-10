@@ -5,6 +5,10 @@
                 Mortgage payment ($)
                 <BaseFormfield id="mortgagePayment" class="formfield" :placeholder="mortgagePayment" v-model="mortgagePaymentAmount" />
             </div>
+            <div class="paymentPlanBox__item">
+                Interest rate (%)
+                <BaseFormfield id="interestRate" class="formfield" />
+            </div>
         </div>
     </MortgageCaculatorBaseContainer>
 </template>
@@ -47,6 +51,7 @@ export default {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    margin: 5px 0;
 }
 .formfield {
     width: 60%;
