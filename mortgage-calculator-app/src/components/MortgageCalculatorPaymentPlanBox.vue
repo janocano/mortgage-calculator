@@ -2,8 +2,8 @@
     <MortgageCaculatorBaseContainer title="Payment Plan">
         <div class="paymentPlanBox">
             <div class="paymentPlanBox__item">
-                Mortgage amount ($)
-                <BaseFormfield class="formfield" placeholder="Mortgage amount" id="mortgageAmount"/>
+                Mortgage payment ($)
+                <BaseFormfield id="mortgagePayment" class="formfield" :placeholder="mortgagePayment" />
             </div>
         </div>
     </MortgageCaculatorBaseContainer>
@@ -15,7 +15,7 @@ export default {
     components: {
         BaseFormfield,
         MortgageCaculatorBaseContainer
-    }
+    },
 }
 </script>
 <style scoped>
