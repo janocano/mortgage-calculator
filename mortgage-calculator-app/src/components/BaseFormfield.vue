@@ -35,6 +35,15 @@ export default {
             default: false
         },
     },
+    methods: {
+        /**
+         * @param {InputEvent} event
+         * @returns {void}
+         */
+        handleInput(event) {
+            this.$emit("input", event.target.value);
+        }
+    }
 }
 </script>
 <style scoped>
