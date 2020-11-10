@@ -1,5 +1,6 @@
 <template>
-    
+    <MortgageCaculatorBaseContainer title="Payment Plan">
+    </MortgageCaculatorBaseContainer>
 </template>
 <script>
 import MortgageCaculatorBaseContainer from "./MortgageCalculatorBaseContainer.vue";
