@@ -36,4 +36,7 @@ export default {
 .button:hover {
     background-color: #004f8f;
 }
+.button:disabled {
+    opacity: 0.75;
+}
 </style>
