@@ -3,11 +3,11 @@
         <div class="paymentPlanBox">
             <div class="paymentPlanBox__item">
                 Mortgage payment ($)
-                <BaseFormfield id="mortgagePayment" class="formfield" :placeholder="mortgagePayment" v-model="mortgagePaymentAmount" />
+                <BaseFormfield id="mortgagePayment" class="formfield" :placeholder="mortgagePayment" v-model="selectedMortgagePayment" />
             </div>
             <div class="paymentPlanBox__item">
                 Interest rate (%)
-                <BaseFormfield id="interestRate" class="formfield" />
+                <BaseFormfield id="interestRate" class="formfield" :placeholder="interestRate" v-model="selectedInterestRate" />
             </div>
         </div>
     </MortgageCaculatorBaseContainer>
@@ -24,8 +24,19 @@ export default {
         MortgageCaculatorBaseContainer
     },
     computed: {
-        ...mapState(["mortgagePayment"]),
-        mortgagePaymentAmount: {
+        ...mapState(["interestRate", "mortgagePayment"]),
+        selectedInterestRate: {
+            get() {
+                return this.interestRate;
+            },
+            set(value) {
+                this.$store.commit({
+                    type: "SET_INTEREST_RATE",
+                    interestRate: value
+                });
+            }
+        },
+        selectedMortgagePayment: {
             get() {
                 return this.mortgagePayment;
             },
