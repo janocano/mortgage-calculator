@@ -3,7 +3,6 @@
         <input 
             :id="id"
             class="formfield__input" 
-            :class="{ 'formfield__input--disabled': isDisabled }"
             :type="type"
             :disabled="isDisabled"
             :value="value"
@@ -62,7 +61,7 @@ export default {
 .formfield__input:focus {
     border-color: #FFD200;
 }
-.formfield__input--disabled {
+.formfield__input:disabled {
     opacity: 0.75;
     color: #000;
 }
