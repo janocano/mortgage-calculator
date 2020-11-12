@@ -31,6 +31,7 @@ export default {
 .resultsBox__price {
     margin: 8px;
     padding: 15px;
+    height: 100%;
     background: rgba(255, 208, 0, 0.5);
     font-size: 32px;
     font-weight: bold;
@@ -43,6 +44,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
     margin: 8px;
     padding: 15px;
     background: rgba(0, 93, 170, 0.5);
