@@ -146,6 +146,6 @@ export default {
     margin: 5px 0;
 }
 .formfield {
-    width: 60%;
+    width: 33%;
 }
 </style>
