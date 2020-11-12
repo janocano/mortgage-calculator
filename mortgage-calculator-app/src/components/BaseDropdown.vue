@@ -35,7 +35,7 @@ export default {
 </script>
 <style scoped>
 .selectMenu {
-    height: 25px;
+    height: 35px;
     border-radius: 5px;
     border: 1px solid #005DAA;
     outline: none;
