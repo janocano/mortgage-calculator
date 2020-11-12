@@ -13,6 +13,10 @@
                 Amortization period
                 <BaseDropdown id="amortizationPeriod" class="formfield" :options="amortizationYearOptions" v-model="selectedAmortizationPeriod" />
             </div>
+            <div class="paymentPlanBox__item">
+                Payment frequency
+                <BaseDropdown id="amortizationPeriod" class="formfield" :options="amortizationYearOptions" v-model="selectedAmortizationPeriod" />
+            </div>
         </div>
     </MortgageCaculatorBaseContainer>
 </template>
