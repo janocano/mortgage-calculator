@@ -9,6 +9,10 @@
                 Prepayment frequency
                 <BaseDropdown id="prepaymentFrequency" class="formfield" :options="prepaymentFrequencyOptions" v-model="selectedPrepaymentFrequncy" />
             </div>
+            <div class="paymentPlanBox__item">
+                Prepayment year (number)
+                <BaseFormfield id="prepaymentYear" class="formfield" :placeholder="prePaymentYear" v-model="selectedPrepaymentYear" />
+            </div>
         </div>
     </MortgageCaculatorBaseContainer>
 </template>
@@ -37,7 +41,7 @@ export default {
         };
     },
     computed: {
-        ...mapState(["prepaymentAmount", "prepaymentFrequency"]),
+        ...mapState(["prepaymentAmount", "prepaymentFrequency", "prepaymentYear"]),
         /**
          * @returns {String}
          */
@@ -61,6 +65,18 @@ export default {
                 this.$store.commit({
                     type: "SET_PREPAYMENT_FREQUENCY",
                     prepaymentFrequency: value
+                });
+            }
+
+        },
+        selectedPrepaymentYear: {
+            get() {
+                return this.prepaymentYear;
+            },
+            set(value) {
+                this.$store.commit({
+                    type: "SET_PREPAYMENT_YEAR",
+                    prepaymentYear: value
                 });
             }
 
