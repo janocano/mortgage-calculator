@@ -2,15 +2,18 @@
   <div id="app" class="mortgageCalculatorPage">
     <div class="mortgageCalculatorPage__title">Mortgage Calculator</div>
     <MortgageCalculatorPaymentPlanBox />
+    <MortgageCalculatorPrepaymentBox />
  </div>
 </template>
 
 <script>
 import MortgageCalculatorPaymentPlanBox from "./components/MortgageCalculatorPaymentPlanBox.vue";
+import MortgageCalculatorPrepaymentBox from "./components/MortgageCalculatorPrepaymentBox.vue";
 export default {
   name: 'MortgageCalculatorPage',
   components: {
-    MortgageCalculatorPaymentPlanBox
+    MortgageCalculatorPaymentPlanBox,
+    MortgageCalculatorPrepaymentBox
   },
 }
 </script>

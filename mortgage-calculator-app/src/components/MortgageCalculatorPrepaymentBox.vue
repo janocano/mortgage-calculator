@@ -1,11 +1,63 @@
 <template>
-    
+    <MortgageCaculatorBaseContainer title="Payment Plan">
+        <div class="paymentPlanBox">
+            <div class="paymentPlanBox__item">
+                Prepayment amount ($)
+                <BaseFormfield id="prepaymentAmount" class="formfield" :placeholder="prePaymentAmount" v-model="selectedPrepaymentAmount" />
+            </div>
+        </div>
+    </MortgageCaculatorBaseContainer>
 </template>
 <script>
+import { mapState } from "vuex";
+
+// Components
+import BaseDropdown from "./BaseDropdown.vue";
+import BaseFormfield from "./BaseFormfield.vue";
+import MortgageCaculatorBaseContainer from "./MortgageCalculatorBaseContainer.vue";
 export default {
+    components: {
+        BaseDropdown,
+        BaseFormfield,
+        MortgageCaculatorBaseContainer
+    },
+    computed: {
+        ...mapState(["prepaymentAmount"]),
+        /**
+         * @returns {String}
+         */
+        selectedPrepaymentAmount: {
+            get() {
+                return this.prepaymentAmount;
+            },
+            set(value) {
+                this.$store.commit({
+                    type: "SET_PREPAYMENT_AMOUNT",
+                    prepaymentAmount: value
+                });
+            }
+
+        },
+    }
     
 }
 </script>
 <style scoped>
+.paymentPlanBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+}
+.paymentPlanBox__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+.formfield {
+    width: 60%;
+}
 
 </style>
