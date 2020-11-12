@@ -5,10 +5,18 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
+        amortizationPeriodYears: "25 Years",
         interestRate: "5.00",
         mortgagePayment: "100000",
     },
     mutations: {
+        /**
+         * @param {Object} payload 
+         * @param {String} payload.amortizationPeriodYears
+         */
+        ["SET_AMORTIZATION_PERIOD_YEARS"](state, payload) {
+            state.amortizationPeriodYears = payload.amortizationPeriodYears
+        },
         /**
          * @param {Object} payload 
          * @param {String} payload.interestRate
