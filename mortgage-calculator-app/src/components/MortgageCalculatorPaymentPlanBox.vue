@@ -10,12 +10,12 @@
                 <BaseFormfield id="interestRate" class="formfield" :placeholder="interestRate" v-model="selectedInterestRate" />
             </div>
             <div class="paymentPlanBox__item">
-                Amortization period
+                Amortization period (years)
                 <BaseDropdown id="amortizationPeriod" class="formfield" :options="amortizationYearOptions" v-model="selectedAmortizationPeriod" />
             </div>
             <div class="paymentPlanBox__item">
                 Payment frequency
-                <BaseDropdown id="amortizationPeriod" class="formfield" :options="amortizationYearOptions" v-model="selectedAmortizationPeriod" />
+                <BaseDropdown id="amortizationPeriod" class="formfield" :options="paymentFrequncyOptions" v-model="selectedPaymentFrequncy" />
             </div>
         </div>
     </MortgageCaculatorBaseContainer>
@@ -35,7 +35,8 @@ export default {
     },
     data() {
         return {
-            amortizationYearOptions: []
+            amortizationYearOptions: [],
+            paymentFrequncyOptions: []
         }
     },
     computed: {
@@ -83,11 +84,28 @@ export default {
                 });
             }
         },
+        /**
+         * @returns {String}
+         */
+        selectedPaymentFrequncy: {
+            get() {
+                return this.paymentFrequency;
+            },
+            set(value) {
+                this.$store.commit({
+                    type: "SET_PAYMENT_FREQUENCY",
+                    paymentFrequency: value
+                });
+            }
+
+        },
     },
     async mounted() {
-        let response = await this.$store.dispatch("getAmortizationYearOptions");
-        console.log(response);
-        this.amortizationYearOptions = response;
+        let paymentFrequncyOptions = await this.$store.dispatch("getPaymentFrequencies");
+        this.paymentFrequncyOptions = paymentFrequncyOptions;
+
+        let amortizationOptions = await this.$store.dispatch("getAmortizationYearOptions");
+        this.amortizationYearOptions = amortizationOptions;
     }
 }
 </script>

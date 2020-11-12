@@ -7,7 +7,7 @@ const MAX_AMORTIZATION_YEARS = 30;
 
 export default new Vuex.Store({
     state: {
-        amortizationPeriodYears: "25 years",
+        amortizationPeriodYears: 25,
         interestRate: "5.00",
         mortgagePayment: "100000",
         paymentFrequency: ""
@@ -49,14 +49,32 @@ export default new Vuex.Store({
          */
         getAmortizationYearOptions() {
             try {
-                let years = ["1 year"];
-                for (let i = 2; i <= MAX_AMORTIZATION_YEARS; i++) {
-                    years.push(`${i} years`)
+                let years = [];
+                for (let i = 1; i <= MAX_AMORTIZATION_YEARS; i++) {
+                    years.push(i)
                 }
                 return Promise.resolve(years);
             } catch (error) {
                 return Promise.reject(error);
             }
-        }
+        },
+        /**
+         * @returns {Promise}
+         */
+        getPaymentFrequencies() {
+            try {
+                let options = [
+                    "Weekly",
+                    "Accelerated weekly",
+                    "Bi-weekly",
+                    "Accelerated bi-weekly",
+                    "Semi-monthly",
+                    "Monthly",
+                ];
+                return Promise.resolve(options);
+            } catch (error) {
+                return Promise.reject(error);
+            }
+        },
     }
 });
