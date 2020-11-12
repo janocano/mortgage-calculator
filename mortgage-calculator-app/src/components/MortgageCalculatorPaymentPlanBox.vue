@@ -17,6 +17,10 @@
                 Payment frequency
                 <BaseDropdown id="amortizationPeriod" class="formfield" :options="paymentFrequncyOptions" v-model="selectedPaymentFrequncy" />
             </div>
+            <div class="paymentPlanBox__item">
+                Mortgage term (years)
+                <BaseDropdown id="amortizationPeriod" class="formfield" :options="paymentFrequncyOptions" v-model="selectedPaymentFrequncy" />
+            </div>
         </div>
     </MortgageCaculatorBaseContainer>
 </template>
