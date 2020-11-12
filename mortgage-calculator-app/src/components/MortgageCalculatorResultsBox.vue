@@ -1,7 +1,7 @@
 <template>
     <MortgageCalculatorBaseContainer title="Results">
         <div v-if="isResultSubmitted" class="resultsBox__price">
-            {{ mortgageResultPerMonth }}
+            ${{ mortgageResultPerMonth }}
             <span class="resultsBox__price--smallerFont">per month</span>
         </div>
         <div v-else class="resultsBox__empty">
@@ -29,6 +29,10 @@ export default {
 </script>
 <style scoped>
 .resultsBox__price {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
     margin: 8px;
     padding: 15px;
     height: 100%;
