@@ -9,6 +9,10 @@
                 Interest rate (%)
                 <BaseFormfield id="interestRate" class="formfield" :placeholder="interestRate" v-model="selectedInterestRate" />
             </div>
+            <div class="paymentPlanBox__item">
+                Amortization period
+                <BaseDropdown id="amortizationPeriod" class="formfield" :options="amortizationYearOptions" v-model="selectedAmortizationPeriod" />
+            </div>
         </div>
     </MortgageCaculatorBaseContainer>
 </template>
@@ -16,15 +20,40 @@
 import { mapState } from "vuex";
 
 // Components
+import BaseDropdown from "./BaseDropdown.vue";
 import BaseFormfield from "./BaseFormfield.vue";
 import MortgageCaculatorBaseContainer from "./MortgageCalculatorBaseContainer.vue";
 export default {
     components: {
+        BaseDropdown,
         BaseFormfield,
         MortgageCaculatorBaseContainer
     },
+    data() {
+        return {
+            amortizationYearOptions: []
+        }
+    },
     computed: {
-        ...mapState(["interestRate", "mortgagePayment"]),
+        ...mapState(["amortizationPeriodYears", "interestRate", "mortgagePayment"]),
+        /**
+         * @returns {String}
+         */
+        selectedAmortizationPeriod: {
+            get() {
+                return this.amortizationPeriodYears;
+            },
+            set(value) {
+                this.$store.commit({
+                    type: "SET_AMORTIZATION_PERIOD_YEARS",
+                    amortizationPeriodYears: value
+                });
+            }
+
+        },
+        /**
+         * @returns {String}
+         */
         selectedInterestRate: {
             get() {
                 return this.interestRate;
@@ -36,6 +65,9 @@ export default {
                 });
             }
         },
+        /**
+         * @returns {String}
+         */
         selectedMortgagePayment: {
             get() {
                 return this.mortgagePayment;
@@ -46,8 +78,13 @@ export default {
                     mortgagePayment: value
                 });
             }
-        }
+        },
     },
+    async mounted() {
+        let response = await this.$store.dispatch("getAmortizationYearOptions");
+        console.log(response);
+        this.amortizationYearOptions = response;
+    }
 }
 </script>
 <style scoped>

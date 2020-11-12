@@ -38,10 +38,10 @@ export default new Vuex.Store({
         /**
          * @returns {Promise}
          */
-        getAmortizationYearOptions({}) {
+        getAmortizationYearOptions() {
             try {
-                let years = [];
-                for (let i = 1; i <= MAX_AMORTIZATION_YEARS; i++) {
+                let years = ["1 year"];
+                for (let i = 2; i <= MAX_AMORTIZATION_YEARS; i++) {
                     years.push(`${i} years`)
                 }
                 return Promise.resolve(years);
