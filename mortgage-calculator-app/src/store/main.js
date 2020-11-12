@@ -15,6 +15,7 @@ export default new Vuex.Store({
         prepaymentAmount: "",
         prepaymentFrequency: "",
         prepaymentYear: "",
+        mortgageResultPerMonth: -1
     },
     mutations: {
         /**
@@ -37,6 +38,13 @@ export default new Vuex.Store({
          */
         ["SET_MORTGAGE_PAYMENT"](state, payload) {
             state.mortgagePayment = payload.mortgagePayment;
+        },
+        /**
+         * @param {Object} payload 
+         * @param {String} payload.mortgageResultPerMonth
+         */
+        ["SET_MORTGAGE_RESULT_PER_MONTH"](state, payload) {
+            state.mortgageResultPerMonth = payload.mortgageResultPerMonth;
         },
         /**
          * @param {Object} payload 
