@@ -13,6 +13,7 @@ export default new Vuex.Store({
         mortgageTerm: 1,
         paymentFrequency: -1,
         prepaymentAmount: "",
+        prepaymentFrequency: "",
     },
     mutations: {
         /**
@@ -57,7 +58,13 @@ export default new Vuex.Store({
         ["SET_PREPAYMENT_AMOUNT"](state, payload) {
             state.prepaymentAmount = payload.prepaymentAmount;
         },
-
+        /**
+         * @param {Object} payload 
+         * @param {String} payload.prepaymentAmount
+         */
+        ["SET_PREPAYMENT_FREQUENCY"](state, payload) {
+            state.prepaymentFrequency = payload.prepaymentFrequency;
+        },
     },
     actions: {
         /**
