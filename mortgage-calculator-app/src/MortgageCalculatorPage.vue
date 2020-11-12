@@ -1,8 +1,8 @@
 <template>
   <div id="app" class="mortgageCalculatorPage">
     <div class="mortgageCalculatorPage__title">Mortgage Calculator</div>
-    <MortgageCalculatorPaymentPlanBox />
-    <MortgageCalculatorPrepaymentBox />
+    <MortgageCalculatorPaymentPlanBox class="mortgageCalculatorBox" />
+    <MortgageCalculatorPrepaymentBox class="mortgageCalculatorBox" />
  </div>
 </template>
 
@@ -31,5 +31,8 @@ export default {
   font-size: 64px;
   font-weight: bold;
   color: #005DAA;
+}
+.mortgageCalculatorBox {
+  margin: 10px 0;
 }
 </style>
