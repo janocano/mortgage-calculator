@@ -5,6 +5,10 @@
                 Prepayment amount ($)
                 <BaseFormfield id="prepaymentAmount" class="formfield" :placeholder="prePaymentAmount" v-model="selectedPrepaymentAmount" />
             </div>
+            <div class="paymentPlanBox__item">
+                Prepayment frequency
+                <BaseDropdown id="prepaymentFrequency" class="formfield" :options="prepaymentFrequencyOptions" v-model="selectedPrepaymentFrequncy" />
+            </div>
         </div>
     </MortgageCaculatorBaseContainer>
 </template>
@@ -15,14 +19,25 @@ import { mapState } from "vuex";
 import BaseDropdown from "./BaseDropdown.vue";
 import BaseFormfield from "./BaseFormfield.vue";
 import MortgageCaculatorBaseContainer from "./MortgageCalculatorBaseContainer.vue";
+
+const PREPAYMENT_FREQUENCY_OPTIONS = [
+    "One time",
+    "Each year",
+    "Same as regular payment"
+];
 export default {
     components: {
         BaseDropdown,
         BaseFormfield,
         MortgageCaculatorBaseContainer
     },
+    data() {
+        return {
+            prepaymentFrequencyOptions: PREPAYMENT_FREQUENCY_OPTIONS
+        };
+    },
     computed: {
-        ...mapState(["prepaymentAmount"]),
+        ...mapState(["prepaymentAmount", "prepaymentFrequency"]),
         /**
          * @returns {String}
          */
@@ -34,6 +49,18 @@ export default {
                 this.$store.commit({
                     type: "SET_PREPAYMENT_AMOUNT",
                     prepaymentAmount: value
+                });
+            }
+
+        },
+        selectedPrepaymentFrequncy: {
+            get() {
+                return this.prepaymentFrequency;
+            },
+            set(value) {
+                this.$store.commit({
+                    type: "SET_PREPAYMENT_FREQUENCY",
+                    prepaymentFrequency: value
                 });
             }
 
