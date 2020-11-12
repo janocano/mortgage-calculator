@@ -15,11 +15,11 @@
             </div>
             <div class="paymentPlanBox__item">
                 Payment frequency
-                <BaseDropdown id="amortizationPeriod" class="formfield" :options="paymentFrequncyOptions" v-model="selectedPaymentFrequncy" />
+                <BaseDropdown id="paymentFrequnce" class="formfield" :options="paymentFrequncyOptions" v-model="selectedPaymentFrequncy" />
             </div>
             <div class="paymentPlanBox__item">
                 Mortgage term (years)
-                <BaseDropdown id="amortizationPeriod" class="formfield" :options="paymentFrequncyOptions" v-model="selectedPaymentFrequncy" />
+                <BaseDropdown id="mortgageTerm" class="formfield" :options="mortgageTermOptions" v-model="selectedPaymentFrequncy" />
             </div>
         </div>
     </MortgageCaculatorBaseContainer>
@@ -40,11 +40,12 @@ export default {
     data() {
         return {
             amortizationYearOptions: [],
+            mortgageTermOptions: [],
             paymentFrequncyOptions: []
         }
     },
     computed: {
-        ...mapState(["amortizationPeriodYears", "interestRate", "mortgagePayment"]),
+        ...mapState(["amortizationPeriodYears", "interestRate", "mortgageTerm", "mortgagePayment", "paymentFrequency"]),
         /**
          * @returns {String}
          */
@@ -91,6 +92,20 @@ export default {
         /**
          * @returns {String}
          */
+        selectedMortgageTerm: {
+            get() {
+                return this.mortgageTerm;
+            },
+            set(value) {
+                this.$store.commit({
+                    type: "SET_MORTGAGE_TERM",
+                    mortgageTerm: value
+                });
+            }
+        },
+        /**
+         * @returns {String}
+         */
         selectedPaymentFrequncy: {
             get() {
                 return this.paymentFrequency;
@@ -110,6 +125,9 @@ export default {
 
         let amortizationOptions = await this.$store.dispatch("getAmortizationYearOptions");
         this.amortizationYearOptions = amortizationOptions;
+
+        let mortgageTermOptions = await this.$store.dispatch("getMortgageTermOptions");
+        this.mortgageTermOptions = mortgageTermOptions;
     }
 }
 </script>
