@@ -3,17 +3,20 @@
     <div class="mortgageCalculatorPage__title">Mortgage Calculator</div>
     <MortgageCalculatorPaymentPlanBox class="mortgageCalculatorBox" />
     <MortgageCalculatorPrepaymentBox class="mortgageCalculatorBox" />
+    <MortgageCalculatorResultsBox />
  </div>
 </template>
 
 <script>
 import MortgageCalculatorPaymentPlanBox from "./components/MortgageCalculatorPaymentPlanBox.vue";
 import MortgageCalculatorPrepaymentBox from "./components/MortgageCalculatorPrepaymentBox.vue";
+import MortgageCalculatorResultsBox from "./components/MortgageCalculatorResultsBox.vue";
 export default {
   name: 'MortgageCalculatorPage',
   components: {
     MortgageCalculatorPaymentPlanBox,
-    MortgageCalculatorPrepaymentBox
+    MortgageCalculatorPrepaymentBox,
+    MortgageCalculatorResultsBox
   },
 }
 </script>

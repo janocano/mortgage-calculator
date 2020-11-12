@@ -5,7 +5,7 @@
             <span class="resultsBox__price--smallerFont">per month</span>
         </div>
         <div class="resultsBox__empty">
-            Nothing to display
+            Nothing to display yet
         </div>
     </MortgageCalculatorBaseContainer>
 </template>
@@ -40,7 +40,7 @@ export default {
     margin: 8px;
     padding: 15px;
     background: rgba(0, 93, 170, 0.5);
-    font-size: 32px;
+    font-size: 24px;
     font-weight: bold;
     color: #005DAA;
 }
