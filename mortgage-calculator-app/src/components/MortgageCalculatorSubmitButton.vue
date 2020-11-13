@@ -1,5 +1,5 @@
 <template>
-    <BaseButton>
+    <BaseButton @click.native="calculateMortgage()">
         <template slot="text">
             Calculate
         </template>
@@ -11,6 +11,11 @@ export default {
     components: {
         BaseButton
     },
+    methods: {
+        calculateMortgage(){
+            
+        }
+    }
 }
 </script>
 <style scoped>
