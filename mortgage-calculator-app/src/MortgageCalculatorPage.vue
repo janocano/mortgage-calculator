@@ -5,6 +5,7 @@
       <div class="mortgageCalculatorPage__calculatorBoxes">
         <MortgageCalculatorPaymentPlanBox class="mortgageCalculatorBox" />
         <MortgageCalculatorPrepaymentBox class="mortgageCalculatorBox" />
+        <MortgageCalculatorSubmitButton class="submitButton"/>
       </div>
       <MortgageCalculatorResultsBox class="mortgageCalculatorBox--right" />
     </div>
@@ -14,12 +15,14 @@
 <script>
 import MortgageCalculatorPaymentPlanBox from "./components/MortgageCalculatorPaymentPlanBox.vue";
 import MortgageCalculatorPrepaymentBox from "./components/MortgageCalculatorPrepaymentBox.vue";
+import MortgageCalculatorSubmitButton from "./components/MortgageCalculatorSubmitButton.vue";
 import MortgageCalculatorResultsBox from "./components/MortgageCalculatorResultsBox.vue";
 export default {
   name: 'MortgageCalculatorPage',
   components: {
     MortgageCalculatorPaymentPlanBox,
     MortgageCalculatorPrepaymentBox,
+    MortgageCalculatorSubmitButton,
     MortgageCalculatorResultsBox
   },
 }
@@ -48,6 +51,9 @@ export default {
   display: flex;
   flex-direction: column;
   min-width: 48%;
+}
+.submitButton {
+  align-self: center;
 }
 .mortgageCalculatorBox {
   margin: 10px 0;
