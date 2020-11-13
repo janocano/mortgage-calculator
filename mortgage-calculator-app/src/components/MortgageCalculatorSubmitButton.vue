@@ -18,7 +18,8 @@ export default {
         };
     },
     computed: {
-        ...mapState([]),
+        ...mapState(["amortizationPeriodYears", "interestRate", "mortgagePayment", "mortgageTerm", "paymentFrequency", "prepaymentAmount", "prepaymentFrequency", "prepaymentYear"]),
+        
     },
     methods: {
         calculateMortgage(){
