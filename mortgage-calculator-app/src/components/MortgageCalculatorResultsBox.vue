@@ -29,13 +29,13 @@ export default {
          */
         paymentFrequencyText() {
             switch(this.paymentFrequency){
-                case 52:
+                case "52":
                     return "per week";
-                case 104:
+                case "104":
                     return "bi-weekly";
-                case 24: 
+                case "24": 
                     return "semi-monthly";
-                case 12:
+                case "12":
                     return "per month";
                 default: 
                     return "";
