@@ -37,19 +37,19 @@ export default {
         /**
          * @returns {Number}
          */
-        monthlyInterestRate() {
-            return this.convertedInterestRate/MONTHS_IN_A_YEAR;
+        interestRatePerPayment() {
+            return this.convertedInterestRate/this.paymentFrequency;
         },
         /**
          * @returns {Number}
          */
-        totalMonthlyPayments() {
-            return this.amortizationPeriodYears*MONTHS_IN_A_YEAR;
+        totalNumberOfPayments() {
+            return this.amortizationPeriodYears*this.paymentFrequency;
         },
     },
     methods: {
         calculateMortgage(){
-            let result = this.calculateMonthlyMortgage(this.convertedMortgagePayment, this.totalMonthlyPayments, this.convertedInterestRate);
+            let result = this.calculateMonthlyMortgage(this.convertedMortgagePayment, this.totalNumberOfPayments, this.interestRatePerPayment);
             this.$store.commit({
                 type: "SET_MORTGAGE_RESULT_PER_MONTH",
                 mortgageResultPerMonth: result

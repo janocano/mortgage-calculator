@@ -11,15 +11,15 @@
             </div>
             <div class="paymentPlanBox__item">
                 Amortization period (years)
-                <BaseDropdown id="amortizationPeriod" class="formfield" :options="amortizationYearOptions" v-model="selectedAmortizationPeriod" />
+                <BaseDropdown id="amortizationPeriod" class="formfield" placeholder="Select years" :options="amortizationYearOptions" v-model="selectedAmortizationPeriod" />
             </div>
             <div class="paymentPlanBox__item">
                 Payment frequency
-                <BaseDropdown id="paymentFrequnce" class="formfield" :options="paymentFrequncyOptions" v-model="selectedPaymentFrequncy" />
+                <BaseDropdown id="paymentFrequnce" class="formfield" placeholder="Select frequency" :options="paymentFrequncyOptions" v-model="selectedPaymentFrequncy" />
             </div>
             <div class="paymentPlanBox__item">
                 Mortgage term (years)
-                <BaseDropdown id="mortgageTerm" class="formfield" :options="mortgageTermOptions" v-model="selectedMortgageTerm" />
+                <BaseDropdown id="mortgageTerm" class="formfield" placeholder="Select years" :options="mortgageTermOptions" v-model="selectedMortgageTerm" />
             </div>
         </div>
     </MortgageCaculatorBaseContainer>
