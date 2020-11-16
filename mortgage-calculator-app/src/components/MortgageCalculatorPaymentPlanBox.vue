@@ -17,10 +17,6 @@
                 Payment frequency
                 <BaseDropdown id="paymentFrequnce" class="formfield" placeholder="Select frequency" :options="paymentFrequncyOptions" v-model="selectedPaymentFrequncy" />
             </div>
-            <div class="paymentPlanBox__item">
-                Mortgage term (years)
-                <BaseDropdown id="mortgageTerm" class="formfield" placeholder="Select years" :options="mortgageTermOptions" v-model="selectedMortgageTerm" />
-            </div>
         </div>
     </MortgageCaculatorBaseContainer>
 </template>
@@ -40,12 +36,11 @@ export default {
     data() {
         return {
             amortizationYearOptions: [],
-            mortgageTermOptions: [],
             paymentFrequncyOptions: []
         }
     },
     computed: {
-        ...mapState(["amortizationPeriodYears", "interestRate", "mortgageTerm", "mortgagePayment", "paymentFrequency"]),
+        ...mapState(["amortizationPeriodYears", "interestRate", "mortgagePayment", "paymentFrequency"]),
         /**
          * @returns {String}
          */
@@ -92,20 +87,6 @@ export default {
         /**
          * @returns {String}
          */
-        selectedMortgageTerm: {
-            get() {
-                return this.mortgageTerm;
-            },
-            set(value) {
-                this.$store.commit({
-                    type: "SET_MORTGAGE_TERM",
-                    mortgageTerm: value
-                });
-            }
-        },
-        /**
-         * @returns {String}
-         */
         selectedPaymentFrequncy: {
             get() {
                 return this.paymentFrequency;
@@ -125,9 +106,6 @@ export default {
 
         let amortizationOptions = await this.$store.dispatch("getAmortizationYearOptions");
         this.amortizationYearOptions = amortizationOptions;
-
-        let mortgageTermOptions = await this.$store.dispatch("getMortgageTermOptions");
-        this.mortgageTermOptions = mortgageTermOptions;
     }
 }
 </script>

@@ -38,5 +38,6 @@ export default {
 }
 .button:disabled {
     opacity: 0.35;
+	cursor: not-allowed;
 }
 </style>
