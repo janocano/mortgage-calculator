@@ -19,7 +19,7 @@ export default {
         };
     },
     computed: {
-        ...mapState(["amortizationPeriodYears", "interestRate", "mortgagePayment", "paymentFrequency", "prepaymentAmount", "prepaymentFrequency", "prepaymentYear"]),
+        ...mapState(["amortizationPeriodYears", "interestRate", "mortgagePayment", "paymentFrequency"]),
         /**
          * @returns {Boolean}
          */
