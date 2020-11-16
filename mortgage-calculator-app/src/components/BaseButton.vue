@@ -37,6 +37,6 @@ export default {
     background-color: #004f8f;
 }
 .button:disabled {
-    opacity: 0.75;
+    opacity: 0.35;
 }
 </style>

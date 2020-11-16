@@ -1,5 +1,5 @@
 <template>
-    <BaseButton :isDisabled="isCalculatingResults"  @click.native="calculateMortgage()">
+    <BaseButton :isDisabled="isButtonDisabled"  @click.native="calculateMortgage()">
         <template slot="text">
             Calculate
         </template>
@@ -20,6 +20,12 @@ export default {
     },
     computed: {
         ...mapState(["amortizationPeriodYears", "interestRate", "mortgagePayment", "paymentFrequency", "prepaymentAmount", "prepaymentFrequency", "prepaymentYear"]),
+        /**
+         * @returns {Boolean}
+         */
+        isButtonDisabled() {
+            return this.isCalculatingResults || this.amortizationPeriodYears === -1 || this.interestRate === "" || this.mortgagePayment === "" || this.paymentFrequency === -1;
+        },
         /**
          * @returns {Number}
          */
@@ -49,11 +55,13 @@ export default {
     },
     methods: {
         calculateMortgage(){
+            this.isCalculatingResults = true;
             let result = this.calculateMonthlyMortgage(this.convertedMortgagePayment, this.totalNumberOfPayments, this.interestRatePerPayment);
             this.$store.commit({
                 type: "SET_MORTGAGE_RESULT",
                 mortgageResult: result
             });
+            this.isCalculatingResults = false;
         },
         calculateMonthlyMortgage(totalMortgagePayment, months, interestRate) {
             let factor = Math.pow(1 + interestRate, months);

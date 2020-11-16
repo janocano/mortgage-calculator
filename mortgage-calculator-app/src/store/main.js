@@ -9,7 +9,7 @@ const MONTHS_IN_A_YEAR = 12;
 const WEEKS_IN_A_YEAR = 52;
 export default new Vuex.Store({
     state: {
-        amortizationPeriodYears: 25,
+        amortizationPeriodYears: -1,
         interestRate: "5.00",
         mortgagePayment: "100000",
         paymentFrequency: -1,
