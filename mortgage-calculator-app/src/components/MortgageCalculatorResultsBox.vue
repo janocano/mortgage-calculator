@@ -2,7 +2,7 @@
     <MortgageCalculatorBaseContainer title="Results">
         <div v-if="isResultSubmitted" class="resultsBox__price">
             ${{ mortgageResult }}
-            <span class="resultsBox__price--smallerFont">per month</span>
+            <span class="resultsBox__price--smallerFont">{{ paymentFrequencyText }}</span>
         </div>
         <div v-else class="resultsBox__empty">
             Nothing to display yet
@@ -17,12 +17,29 @@ export default {
         MortgageCalculatorBaseContainer
     },
     computed: {
-        ...mapState(["mortgageResult"]),
+        ...mapState(["mortgageResult", "paymentFrequency"]),
         /**
          * @returns {Boolean}
          */
         isResultSubmitted() {
             return this.mortgageResult !== -1;
+        },
+        /**
+         * @returns {String}
+         */
+        paymentFrequencyText() {
+            switch(this.paymentFrequency){
+                case 52:
+                    return "per week";
+                case 104:
+                    return "bi-weekly";
+                case 24: 
+                    return "semi-monthly";
+                case 12:
+                    return "per month";
+                default: 
+                    return "";
+            }
         }
     }
 }
