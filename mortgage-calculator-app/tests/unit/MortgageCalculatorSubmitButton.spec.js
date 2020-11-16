@@ -24,4 +24,8 @@ describe("MortgageCalculatorSubmitButton.vue", () => {
         });
         wrapper = shallowMount(MortgageCalculatorSubmitButton, { localVue, store, stubs });
     });
+    it("disables the button from click if the button is calculating the results.", async () => {
+        await wrapper.setData({ isCalculatingResults: true });
+        expect(wrapper.find("BaseButton-stub").attributes("isdisabled")).toBe("true");
+    });
 });
