@@ -1,7 +1,7 @@
 <template>
     <MortgageCalculatorBaseContainer title="Results">
         <div v-if="isResultSubmitted" class="resultsBox__price">
-            ${{ mortgageResultPerMonth }}
+            ${{ mortgageResult }}
             <span class="resultsBox__price--smallerFont">per month</span>
         </div>
         <div v-else class="resultsBox__empty">
@@ -17,12 +17,12 @@ export default {
         MortgageCalculatorBaseContainer
     },
     computed: {
-        ...mapState(["mortgageResultPerMonth"]),
+        ...mapState(["mortgageResult"]),
         /**
          * @returns {Boolean}
          */
         isResultSubmitted() {
-            return this.mortgageResultPerMonth !== -1;
+            return this.mortgageResult !== -1;
         }
     }
 }

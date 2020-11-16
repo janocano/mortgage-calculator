@@ -19,7 +19,7 @@ export default {
         };
     },
     computed: {
-        ...mapState(["amortizationPeriodYears", "interestRate", "mortgagePayment", "mortgageTerm", "paymentFrequency", "prepaymentAmount", "prepaymentFrequency", "prepaymentYear"]),
+        ...mapState(["amortizationPeriodYears", "interestRate", "mortgagePayment", "paymentFrequency", "prepaymentAmount", "prepaymentFrequency", "prepaymentYear"]),
         /**
          * @returns {Number}
          */
@@ -51,8 +51,8 @@ export default {
         calculateMortgage(){
             let result = this.calculateMonthlyMortgage(this.convertedMortgagePayment, this.totalNumberOfPayments, this.interestRatePerPayment);
             this.$store.commit({
-                type: "SET_MORTGAGE_RESULT_PER_MONTH",
-                mortgageResultPerMonth: result
+                type: "SET_MORTGAGE_RESULT",
+                mortgageResult: result
             });
         },
         calculateMonthlyMortgage(totalMortgagePayment, months, interestRate) {
