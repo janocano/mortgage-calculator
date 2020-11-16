@@ -1,7 +1,7 @@
 <template>
     <select :id="id" name="cars" class="selectMenu" @input="handleInput">
-        <option disabled value>{{ placeholder }}</option>
-        <option v-for="option in options" :value="option" v-bind:key="option">{{ option }}</option>
+        <option disabled value selected>{{ placeholder }}</option>
+        <option v-for="option in options" :value="option.value" v-bind:key="option.value">{{ option.text }}</option>
     </select>
 </template>
 <script>

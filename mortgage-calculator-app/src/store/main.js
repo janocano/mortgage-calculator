@@ -5,6 +5,8 @@ Vue.use(Vuex);
 
 const MAX_AMORTIZATION_YEARS = 30;
 const MAX_MORTGAGE_TERM_YEARS = 10; 
+const MONTHS_IN_A_YEAR = 12;
+const WEEKS_IN_A_YEAR = 52;
 export default new Vuex.Store({
     state: {
         amortizationPeriodYears: 25,
@@ -90,7 +92,11 @@ export default new Vuex.Store({
             try {
                 let years = [];
                 for (let i = 1; i <= MAX_AMORTIZATION_YEARS; i++) {
-                    years.push(i)
+                    let newObj = {
+                        value: i,
+                        text: i
+                    };
+                    years.push(newObj)
                 }
                 return Promise.resolve(years);
             } catch (error) {
@@ -103,12 +109,22 @@ export default new Vuex.Store({
         getPaymentFrequencies() {
             try {
                 let options = [
-                    "Weekly",
-                    "Accelerated weekly",
-                    "Bi-weekly",
-                    "Accelerated bi-weekly",
-                    "Semi-monthly",
-                    "Monthly",
+                    {
+                        value: WEEKS_IN_A_YEAR,
+                        text: "Weekly"
+                    },
+                    {
+                        value: WEEKS_IN_A_YEAR*2,
+                        text: "Bi-weekly"
+                    },
+                    {
+                        value: MONTHS_IN_A_YEAR*2,
+                        text: "Semi-monthly"
+                    },
+                    {
+                        value: MONTHS_IN_A_YEAR,
+                        text: "Monthly"
+                    },
                 ];
                 return Promise.resolve(options);
             } catch (error) {
@@ -122,7 +138,11 @@ export default new Vuex.Store({
             try {
                 let years = [];
                 for (let i = 1; i <= MAX_MORTGAGE_TERM_YEARS; i++) {
-                    years.push(i)
+                    let newObj = {
+                        value: i,
+                        text: i
+                    };
+                    years.push(newObj)
                 }
                 return Promise.resolve(years);
             } catch (error) {

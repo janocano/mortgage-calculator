@@ -7,9 +7,8 @@
 </template>
 <script>
 import { mapState } from "vuex";
-import BaseButton from "./BaseButton.vue";
 
-const MONTHS_IN_A_YEAR = 12;
+import BaseButton from "./BaseButton.vue";
 export default {
     components: {
         BaseButton
@@ -26,14 +25,14 @@ export default {
          */
         convertedInterestRate() {
             let interestRateNoCommas = this.interestRate.replace(",", "");
-            return parseFloar(interestRateNoCommas);
+            return parseFloat(interestRateNoCommas)/100;
         },
         /**
          * @returns {Number}
          */
         convertedMortgagePayment() {
             let mortgagePaymentNoCommas = this.mortgagePayment.replace(",", "");
-            return parseFloar(mortgagePaymentNoCommas);
+            return parseFloat(mortgagePaymentNoCommas);
         },
         /**
          * @returns {Number}
@@ -41,10 +40,24 @@ export default {
         monthlyInterestRate() {
             return this.convertedInterestRate/MONTHS_IN_A_YEAR;
         },
+        /**
+         * @returns {Number}
+         */
+        totalMonthlyPayments() {
+            return this.amortizationPeriodYears*MONTHS_IN_A_YEAR;
+        },
     },
     methods: {
         calculateMortgage(){
-
+            let result = this.calculateMonthlyMortgage(this.convertedMortgagePayment, this.totalMonthlyPayments, this.convertedInterestRate);
+            this.$store.commit({
+                type: "SET_MORTGAGE_RESULT_PER_MONTH",
+                mortgageResultPerMonth: result
+            });
+        },
+        calculateMonthlyMortgage(totalMortgagePayment, months, interestRate) {
+            let factor = Math.pow(1 + interestRate, months);
+            return totalMortgagePayment*interestRate*factor/(factor - 1);
         }
     }
 }

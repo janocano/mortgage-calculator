@@ -19,7 +19,7 @@
             </div>
             <div class="paymentPlanBox__item">
                 Mortgage term (years)
-                <BaseDropdown id="mortgageTerm" class="formfield" :options="mortgageTermOptions" v-model="selectedPaymentFrequncy" />
+                <BaseDropdown id="mortgageTerm" class="formfield" :options="mortgageTermOptions" v-model="selectedMortgageTerm" />
             </div>
         </div>
     </MortgageCaculatorBaseContainer>

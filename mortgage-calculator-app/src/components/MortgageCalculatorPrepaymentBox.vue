@@ -1,9 +1,9 @@
 <template>
-    <MortgageCaculatorBaseContainer title="Payment Plan">
+    <MortgageCaculatorBaseContainer title="Prepayment Plan">
         <div class="paymentPlanBox">
             <div class="paymentPlanBox__item">
                 Prepayment amount ($)
-                <BaseFormfield id="prepaymentAmount" class="formfield" :placeholder="prePaymentAmount" v-model="selectedPrepaymentAmount" />
+                <BaseFormfield id="prepaymentAmount" class="formfield" :placeholder="prepaymentAmount" v-model="selectedPrepaymentAmount" />
             </div>
             <div class="paymentPlanBox__item">
                 Prepayment frequency
@@ -11,7 +11,7 @@
             </div>
             <div class="paymentPlanBox__item">
                 Prepayment year (number)
-                <BaseFormfield id="prepaymentYear" class="formfield" :placeholder="prePaymentYear" v-model="selectedPrepaymentYear" />
+                <BaseFormfield id="prepaymentYear" class="formfield" :placeholder="prepaymentYear" v-model="selectedPrepaymentYear" />
             </div>
         </div>
     </MortgageCaculatorBaseContainer>
