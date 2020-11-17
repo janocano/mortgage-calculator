@@ -6,6 +6,21 @@ import MortgageCalculatorSubmitButton from "../../src/components/MortgageCalcula
 const localVue = createLocalVue();
 localVue.use(Vuex);
 
+/**
+ * @param {Number} totalMortgagePayment
+ * @param {Number} months
+ * @param {Number} interestRate
+ * @returns {Number}
+ */
+function mortgageCalculatorFormula(totalMortgagePayment, interestRate, paymentFrequency, amortizationPeriod) {
+    let months = amortizationPeriod*paymentFrequency;
+
+    interestRate = interestRate/100/paymentFrequency;
+
+    let factor = Math.pow(1 + interestRate, months);
+    return totalMortgagePayment*interestRate*factor/(factor - 1);
+}
+
 describe("MortgageCalculatorSubmitButton.vue", () => {
     let wrapper, store, state, mutations;
     let stubs = ["BaseButton"];
@@ -55,6 +70,20 @@ describe("MortgageCalculatorSubmitButton.vue", () => {
         });
     });
     describe("Calculating the mortgage", () => {
-        
+        it("calculates the correct mortgage given a mortgage payment string with comma seperators.", async () => {
+            state = {
+                mortgagePayment: "150,000",
+                interestRate: "1.74",
+                paymentFrequency: 52,
+                amortizationPeriodYears: 25
+            };
+            await wrapper.vm.$nextTick();
+            let expectedResult = mortgageCalculatorFormula(150000, 1.74, 52, 25);
+            await wrapper.find("BaseButton-stub").trigger("click");
+            expect(mutations.SET_MORTGAGE_RESULT).toHaveBeenCalledWith(state, {
+                type: "SET_MORTGAGE_RESULT",
+                mortgageResult: expectedResult
+            });
+        });
     });
 });
