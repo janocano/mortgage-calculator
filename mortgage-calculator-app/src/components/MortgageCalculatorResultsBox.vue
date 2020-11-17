@@ -1,7 +1,7 @@
 <template>
     <MortgageCalculatorBaseContainer title="Results">
         <div v-if="isResultSubmitted" class="resultsBox__price">
-            ${{ mortgageResult }}
+            ${{ shortenedMortgageResult }}
             <span class="resultsBox__price--smallerFont">{{ paymentFrequencyText }}</span>
         </div>
         <div v-else class="resultsBox__empty">
@@ -41,6 +41,12 @@ export default {
                     return "";
             }
         },
+        /**
+         * @returns {Number}
+         */
+        shortenedMortgageResult() {
+            return this.mortgageResult.toFixed(2);
+        }
     }
 }
 </script>
@@ -54,11 +60,12 @@ export default {
     padding: 15px;
     height: 100%;
     background: rgba(255, 208, 0, 0.5);
-    font-size: 32px;
+    font-size: 40px;
     font-weight: bold;
     color: #005DAA;
 }
 .resultsBox__price--smallerFont {
+    margin-left: 10px;
     font-size: 24px;
 }
 .resultsBox__empty {
