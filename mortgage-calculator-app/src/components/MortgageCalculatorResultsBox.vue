@@ -54,10 +54,8 @@ export default {
         }
     },
     watch: {
-        mortgageResult(newValue) {
-            if (newValue !== -1 && !isNaN(newValue)) {
-                this.currentPaymentFrequency = this.paymentFrequency;
-            }
+        mortgageResult() {
+            this.currentPaymentFrequency = this.paymentFrequency;
         }
     }
 }
