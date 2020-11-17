@@ -7,5 +7,6 @@ const localVue = createLocalVue();
 localVue.use(Vuex);
 
 describe("MortgageCalculatorResultsBox.vue", () => {
-
+    let wrapper, store, state;
+    
 });

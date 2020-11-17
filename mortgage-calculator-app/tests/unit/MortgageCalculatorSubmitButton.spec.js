@@ -23,7 +23,6 @@ function mortgageCalculatorFormula(totalMortgagePayment, interestRate, paymentFr
 
 describe("MortgageCalculatorSubmitButton.vue", () => {
     let wrapper, store, state, mutations;
-    let stubs = ["BaseButton"];
     window.alert = jest.fn();
     beforeEach(() => {
         state = {
@@ -38,7 +37,7 @@ describe("MortgageCalculatorSubmitButton.vue", () => {
         store = new Vuex.Store({
             state, mutations
         });
-        wrapper = shallowMount(MortgageCalculatorSubmitButton, { localVue, store, stubs });
+        wrapper = shallowMount(MortgageCalculatorSubmitButton, { localVue, store });
     });
     describe("Disabling the button", () => {
         it("does not disable the button from click if the button is not calculating the results and all the required fields are filled in.", async () => {
