@@ -61,4 +61,9 @@ describe("MortgageCalculatorResultsBox.vue", () => {
         await wrapper.vm.$nextTick();
         expect(wrapper.find(".resultsBox__price--smallerFont").text()).toBe("per month");
     });
+    it("displays the correct text if the payment frequency is none of the known amounts.", async () => {
+        state.paymentFrequency = "12345554765756";
+        await wrapper.vm.$nextTick();
+        expect(wrapper.find(".resultsBox__price--smallerFont").text()).toBe("");
+    });
 });
