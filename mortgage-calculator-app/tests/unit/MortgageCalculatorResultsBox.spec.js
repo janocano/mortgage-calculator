@@ -51,4 +51,14 @@ describe("MortgageCalculatorResultsBox.vue", () => {
         await wrapper.vm.$nextTick();
         expect(wrapper.find(".resultsBox__price--smallerFont").text()).toBe("bi-weekly");
     });
+    it("displays the correct text if the payment frequency is 24.", async () => {
+        state.paymentFrequency = "24";
+        await wrapper.vm.$nextTick();
+        expect(wrapper.find(".resultsBox__price--smallerFont").text()).toBe("semi-monthly");
+    });
+    it("displays the correct text if the payment frequency is 12.", async () => {
+        state.paymentFrequency = "12";
+        await wrapper.vm.$nextTick();
+        expect(wrapper.find(".resultsBox__price--smallerFont").text()).toBe("per month");
+    });
 });
