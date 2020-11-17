@@ -33,7 +33,7 @@ export default {
   font-family: system-ui;
 }
 .mortgageCalculatorPage {
-  padding: 10vh 10vw;
+  padding: 10vh 5vw;
   display: flex;
   flex-direction: column;
 }
