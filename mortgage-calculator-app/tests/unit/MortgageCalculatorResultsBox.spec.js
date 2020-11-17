@@ -20,4 +20,9 @@ describe("MortgageCalculatorResultsBox.vue", () => {
         expect(wrapper.find(".resultsBox__price").text()).toContain("200.12");
         expect(wrapper.find(".resultsBox__price").text()).not.toContain(`${state.mortgageResult}`);
     });
+    it("displays the mortgage rate up to two decimal places given a mortgage result with less than 2 decimal places.", async () => {
+        state.mortgageResult = 200;
+        await wrapper.vm.$nextTick();
+        expect(wrapper.find(".resultsBox__price").text()).toContain("200.00");
+    });
 });
