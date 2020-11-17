@@ -32,4 +32,9 @@ describe("MortgageCalculatorSubmitButton.vue", () => {
         await wrapper.setData({ isCalculatingResults: true });
         expect(wrapper.find("BaseButton-stub").attributes("isdisabled")).toBe("true");
     });
+    it("disables the button from click if the amortization period is not yet chosen.", async () => {
+        state.amortizationPeriodYears = -1;
+        await wrapper.vm.$nextTick();
+        expect(wrapper.find("BaseButton-stub").attributes("isdisabled")).toBe("true");
+    });
 });
