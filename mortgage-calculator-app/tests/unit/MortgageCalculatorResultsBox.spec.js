@@ -10,10 +10,14 @@ describe("MortgageCalculatorResultsBox.vue", () => {
     let wrapper, store, state;
     beforeEach(() => {
         state = {
-            mortgageResult: 200.123456,
+            mortgageResult: 200.123,
             paymentFrequency: "52"
         };
         store = new Vuex.Store({ state });
         wrapper = shallowMount(MortgageCalculatorResultsBox, { localVue, store });
+    });
+    it("displays the mortgage rate up to two decimal places.", () => {
+        expect(wrapper.find(".resultsBox__price").text()).toContain("200.12");
+        expect(wrapper.find(".resultsBox__price").text()).not.toContain(`${state.mortgageResult}`);
     });
 });
