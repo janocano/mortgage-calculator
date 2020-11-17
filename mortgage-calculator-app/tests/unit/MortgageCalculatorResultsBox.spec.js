@@ -43,4 +43,7 @@ describe("MortgageCalculatorResultsBox.vue", () => {
         expect(wrapper.find(".resultsBox__empty").exists()).toBe(true);
         expect(wrapper.find(".resultsBox__empty").isVisible()).toBe(true);
     });
+    it("displays the correct text if the payment frequency is 52.", () => {
+        expect(wrapper.find(".resultsBox__price--smallerFont").text()).toBe("per week");
+    });
 });
