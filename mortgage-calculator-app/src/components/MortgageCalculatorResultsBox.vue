@@ -16,6 +16,11 @@ export default {
     components: {
         MortgageCalculatorBaseContainer
     },
+    data() {
+        return {
+            currentPaymentFrequency: -1
+        };
+    },
     computed: {
         ...mapState(["mortgageResult", "paymentFrequency"]),
         /**
@@ -28,7 +33,7 @@ export default {
          * @returns {String}
          */
         paymentFrequencyText() {
-            switch(this.paymentFrequency){
+            switch(this.currentPaymentFrequency){
                 case "52":
                     return "per week";
                 case "104":
@@ -46,6 +51,13 @@ export default {
          */
         shortenedMortgageResult() {
             return this.mortgageResult.toFixed(2);
+        }
+    },
+    watch: {
+        mortgageResult(newValue) {
+            if (newValue !== -1 && !isNaN(newValue)) {
+                this.currentPaymentFrequency = this.paymentFrequency;
+            }
         }
     }
 }
