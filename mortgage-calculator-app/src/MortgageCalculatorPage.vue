@@ -4,7 +4,7 @@
     <div class="mortgageCalculatorPage__calculatorSection">
       <div class="mortgageCalculatorPage__calculatorBoxes">
         <MortgageCalculatorPaymentPlanBox class="mortgageCalculatorBox" />
-        <MortgageCalculatorPrepaymentBox class="mortgageCalculatorBox" />
+        <MortgageCalculatorPrepaymentBox class="mortgageCalculatorBox mortgageCalculatorBox--disabled" />
         <MortgageCalculatorSubmitButton class="submitButton"/>
       </div>
       <MortgageCalculatorResultsBox class="mortgageCalculatorBox--right" />
@@ -61,6 +61,9 @@ export default {
 .mortgageCalculatorBox--right {
   margin: 10px 0;
   margin-left: 20px;
-
+}
+.mortgageCalculatorBox--disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
 }
 </style>
