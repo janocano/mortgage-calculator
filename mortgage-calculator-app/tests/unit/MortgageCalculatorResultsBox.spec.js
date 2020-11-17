@@ -43,26 +43,32 @@ describe("MortgageCalculatorResultsBox.vue", () => {
         expect(wrapper.find(".resultsBox__empty").exists()).toBe(true);
         expect(wrapper.find(".resultsBox__empty").isVisible()).toBe(true);
     });
-    it("displays the correct text if the payment frequency is 52.", () => {
+    it("displays the correct text if the payment frequency is 52.", async () => {
+        state.mortgageResult = 54;
+        await wrapper.vm.$nextTick();
         expect(wrapper.find(".resultsBox__price--smallerFont").text()).toBe("per week");
     });
     it("displays the correct text if the payment frequency is 104.", async () => {
         state.paymentFrequency = "104";
+        state.mortgageResult = 54;
         await wrapper.vm.$nextTick();
         expect(wrapper.find(".resultsBox__price--smallerFont").text()).toBe("bi-weekly");
     });
     it("displays the correct text if the payment frequency is 24.", async () => {
         state.paymentFrequency = "24";
+        state.mortgageResult = 54;
         await wrapper.vm.$nextTick();
         expect(wrapper.find(".resultsBox__price--smallerFont").text()).toBe("semi-monthly");
     });
     it("displays the correct text if the payment frequency is 12.", async () => {
         state.paymentFrequency = "12";
+        state.mortgageResult = 54;
         await wrapper.vm.$nextTick();
         expect(wrapper.find(".resultsBox__price--smallerFont").text()).toBe("per month");
     });
     it("displays the correct text if the payment frequency is none of the known amounts.", async () => {
         state.paymentFrequency = "12345554765756";
+        state.mortgageResult = 54;
         await wrapper.vm.$nextTick();
         expect(wrapper.find(".resultsBox__price--smallerFont").text()).toBe("");
     });
