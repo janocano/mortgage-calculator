@@ -24,6 +24,7 @@ function mortgageCalculatorFormula(totalMortgagePayment, interestRate, paymentFr
 describe("MortgageCalculatorSubmitButton.vue", () => {
     let wrapper, store, state, mutations;
     let stubs = ["BaseButton"];
+    window.alert = jest.fn();
     beforeEach(() => {
         state = {
             amortizationPeriodYears: 25,
@@ -71,12 +72,10 @@ describe("MortgageCalculatorSubmitButton.vue", () => {
     });
     describe("Calculating the mortgage", () => {
         it("calculates the correct mortgage given a mortgage payment string with comma seperators.", async () => {
-            state = {
-                mortgagePayment: "150,000",
-                interestRate: "1.74",
-                paymentFrequency: 52,
-                amortizationPeriodYears: 25
-            };
+            state.mortgagePayment = "150,000";
+            state.interestRate = "1.74";
+            state.paymentFrequency = 52;
+            state.amortizationPeriodYears = 25;
             await wrapper.vm.$nextTick();
             let expectedResult = mortgageCalculatorFormula(150000, 1.74, 52, 25);
             await wrapper.find("BaseButton-stub").trigger("click");
@@ -84,6 +83,29 @@ describe("MortgageCalculatorSubmitButton.vue", () => {
                 type: "SET_MORTGAGE_RESULT",
                 mortgageResult: expectedResult
             });
+        });
+        it("calculates the correct mortgage given a mortgage payment string with no comma seperators.", async () => {
+            state.mortgagePayment = "15000";
+            state.interestRate = "1.74";
+            state.paymentFrequency = 52;
+            state.amortizationPeriodYears = 25;
+            await wrapper.vm.$nextTick();
+            let expectedResult = mortgageCalculatorFormula(15000, 1.74, 52, 25);
+            await wrapper.find("BaseButton-stub").trigger("click");
+            expect(mutations.SET_MORTGAGE_RESULT).toHaveBeenCalledWith(state, {
+                type: "SET_MORTGAGE_RESULT",
+                mortgageResult: expectedResult
+            });
+        });
+        it("shows an alert if the given mortgage payment string is not a valid number.", async () => {
+            state.mortgagePayment = "million";
+            state.interestRate = "1.74";
+            state.paymentFrequency = 52;
+            state.amortizationPeriodYears = 25;
+            await wrapper.vm.$nextTick();
+            await wrapper.find("BaseButton-stub").trigger("click");
+            expect(mutations.SET_MORTGAGE_RESULT).not.toHaveBeenCalled();
+            expect(window.alert).toHaveBeenCalledWith("There was an error calculating your mortgage. Please check that the fields are filled out correctly.");
         });
     });
 });

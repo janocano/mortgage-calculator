@@ -58,6 +58,10 @@ export default {
             this.isCalculatingResults = true;
             try {
                 let result = this.calculateMonthlyMortgage(this.convertedMortgagePayment, this.totalNumberOfPayments, this.interestRatePerPayment);
+                if (isNaN(result)) {
+                    alert("There was an error calculating your mortgage. Please check that the fields are filled out correctly.");
+                    return;
+                }
                 this.$store.commit({
                     type: "SET_MORTGAGE_RESULT",
                     mortgageResult: result
