@@ -37,4 +37,19 @@ describe("MortgageCalculatorSubmitButton.vue", () => {
         await wrapper.vm.$nextTick();
         expect(wrapper.find("BaseButton-stub").attributes("isdisabled")).toBe("true");
     });
+    it("disables the button from click if the interest rate is empty.", async () => {
+        state.interestRate = "";
+        await wrapper.vm.$nextTick();
+        expect(wrapper.find("BaseButton-stub").attributes("isdisabled")).toBe("true");
+    });
+    it("disables the button from click if the mortgage payment is empty.", async () => {
+        state.mortgagePayment = "";
+        await wrapper.vm.$nextTick();
+        expect(wrapper.find("BaseButton-stub").attributes("isdisabled")).toBe("true");
+    });
+    it("disables the button from click if the payment frequency is not yet chosen.", async () => {
+        state.paymentFrequency = -1;
+        await wrapper.vm.$nextTick();
+        expect(wrapper.find("BaseButton-stub").attributes("isdisabled")).toBe("true");
+    });
 });
