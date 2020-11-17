@@ -32,4 +32,15 @@ describe("MortgageCalculatorResultsBox.vue", () => {
     it("does not render the default empty text the price if the mortgage result is not -1", () => {
         expect(wrapper.find(".resultsBox__empty").exists()).toBe(false);
     });
+    it("does not render the price if the mortgage result is -1.", async () => {
+        state.mortgageResult = -1;
+        await wrapper.vm.$nextTick();
+        expect(wrapper.find(".resultsBox__price").exists()).toBe(false);
+    });
+    it("displays the default text if the mortgage result is -1.", async () => {
+        state.mortgageResult = -1;
+        await wrapper.vm.$nextTick();
+        expect(wrapper.find(".resultsBox__empty").exists()).toBe(true);
+        expect(wrapper.find(".resultsBox__empty").isVisible()).toBe(true);
+    });
 });
