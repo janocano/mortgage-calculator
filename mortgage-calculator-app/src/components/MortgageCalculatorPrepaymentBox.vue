@@ -3,15 +3,15 @@
         <div class="paymentPlanBox">
             <div class="paymentPlanBox__item">
                 Prepayment amount ($)
-                <BaseFormfield id="prepaymentAmount" class="formfield" :placeholder="prepaymentAmount" v-model="selectedPrepaymentAmount" />
+                <BaseFormfield :isDisabled="true" id="prepaymentAmount" class="formfield" :placeholder="prepaymentAmount" v-model="selectedPrepaymentAmount" />
             </div>
             <div class="paymentPlanBox__item">
                 Prepayment frequency
-                <BaseDropdown id="prepaymentFrequency" class="formfield" :options="prepaymentFrequencyOptions" v-model="selectedPrepaymentFrequncy" />
+                <BaseDropdown :isDisabled="true"  id="prepaymentFrequency" class="formfield" :options="prepaymentFrequencyOptions" v-model="selectedPrepaymentFrequncy" />
             </div>
             <div class="paymentPlanBox__item">
                 Prepayment year (number)
-                <BaseFormfield id="prepaymentYear" class="formfield" :placeholder="prepaymentYear" v-model="selectedPrepaymentYear" />
+                <BaseFormfield :isDisabled="true"  id="prepaymentYear" class="formfield" :placeholder="prepaymentYear" v-model="selectedPrepaymentYear" />
             </div>
         </div>
     </MortgageCaculatorBaseContainer>

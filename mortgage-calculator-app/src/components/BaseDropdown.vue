@@ -1,5 +1,5 @@
 <template>
-    <select :id="id" name="cars" class="selectMenu" @input="handleInput">
+    <select :id="id" class="selectMenu" @input="handleInput" :disabled="isDisabled">
         <option disabled value selected>{{ placeholder }}</option>
         <option v-for="option in options" :value="option.value" v-bind:key="option.value">{{ option.text }}</option>
     </select>
@@ -20,6 +20,10 @@ export default {
         placeholder: {
             type: String,
             default: "Select an option"
+        },
+        isDisabled: {
+            type: Boolean,
+            default: false
         }
     },
     methods: {
