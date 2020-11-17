@@ -25,4 +25,11 @@ describe("MortgageCalculatorResultsBox.vue", () => {
         await wrapper.vm.$nextTick();
         expect(wrapper.find(".resultsBox__price").text()).toContain("200.00");
     });
+    it("displays the price if the mortgage result is not -1.", () => {
+        expect(wrapper.find(".resultsBox__price").exists()).toBe(true);
+        expect(wrapper.find(".resultsBox__price").isVisible()).toBe(true);
+    });
+    it("does not render the default empty text the price if the mortgage result is not -1", () => {
+        expect(wrapper.find(".resultsBox__empty").exists()).toBe(false);
+    });
 });
