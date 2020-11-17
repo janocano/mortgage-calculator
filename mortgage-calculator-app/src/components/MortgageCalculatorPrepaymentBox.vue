@@ -25,9 +25,18 @@ import BaseFormfield from "./BaseFormfield.vue";
 import MortgageCaculatorBaseContainer from "./MortgageCalculatorBaseContainer.vue";
 
 const PREPAYMENT_FREQUENCY_OPTIONS = [
-    "One time",
-    "Each year",
-    "Same as regular payment"
+     {
+        value: "One time",
+        text: "One time"
+     },
+     {
+        value: "Each year",
+        text: "Each year"
+     },
+     {
+        value: "Same as regular payment",
+        text: "Same as regular payment"
+     },
 ];
 export default {
     components: {
