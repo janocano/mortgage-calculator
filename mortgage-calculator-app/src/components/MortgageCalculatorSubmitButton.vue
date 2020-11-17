@@ -56,12 +56,17 @@ export default {
     methods: {
         calculateMortgage(){
             this.isCalculatingResults = true;
-            let result = this.calculateMonthlyMortgage(this.convertedMortgagePayment, this.totalNumberOfPayments, this.interestRatePerPayment);
-            this.$store.commit({
-                type: "SET_MORTGAGE_RESULT",
-                mortgageResult: result
-            });
-            this.isCalculatingResults = false;
+            try {
+                let result = this.calculateMonthlyMortgage(this.convertedMortgagePayment, this.totalNumberOfPayments, this.interestRatePerPayment);
+                this.$store.commit({
+                    type: "SET_MORTGAGE_RESULT",
+                    mortgageResult: result
+                });
+            } catch(error) {
+                alert("There was an error calculating your mortgage. Please check that the fields are filled out correctly.");
+            } finally {
+                this.isCalculatingResults = false;
+            }
         },
         /**
          * @param {Number} totalMortgagePayment
