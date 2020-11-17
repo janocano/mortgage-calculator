@@ -54,5 +54,7 @@ describe("MortgageCalculatorSubmitButton.vue", () => {
             expect(wrapper.find("BaseButton-stub").attributes("isdisabled")).toBe("true");
         });
     });
-    
+    describe("Calculating the mortgage", () => {
+        
+    });
 });

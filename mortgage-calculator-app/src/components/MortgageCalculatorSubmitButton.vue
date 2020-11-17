@@ -63,6 +63,12 @@ export default {
             });
             this.isCalculatingResults = false;
         },
+        /**
+         * @param {Number} totalMortgagePayment
+         * @param {Number} months
+         * @param {Number} interestRate
+         * @returns {Number}
+         */
         calculateMonthlyMortgage(totalMortgagePayment, months, interestRate) {
             let factor = Math.pow(1 + interestRate, months);
             return totalMortgagePayment*interestRate*factor/(factor - 1);
